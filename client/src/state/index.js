@@ -70,5 +70,10 @@ export const selectCartSelection = (state) => state.cart.isCartOpen
 export const selectMenuSelection = (state) => state.cart.isMenuOpen
 export const selectAllItems = (state) => state.cart.items
 export const selectCart = (state) => state.cart.cart
+export const selectTotalPrice = (state) =>
+  (state.cart.cart || [])?.reduce((total, item) => {
+    total = total + item.count * item.attributes.price
+    return total
+  }, 0)
 
 export default cartSlice.reducer

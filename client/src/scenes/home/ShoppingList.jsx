@@ -64,7 +64,7 @@ const ShoppingList = () => {
         {items
           .filter((item) => item.attributes.category === selectCategory)
           .map((item, index) => (
-            <li key={index} className="border-2 rounded-md">
+            <li key={item.id} className="border-2 rounded-md">
               <ItemCard item={item} />
             </li>
           ))}

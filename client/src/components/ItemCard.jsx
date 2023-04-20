@@ -26,14 +26,12 @@ const ItemCard = ({ item }) => {
   }
 
   return (
-    <div
-      className="flex flex-col justify-center items-start p-2 relative cursor-pointer"
-      onClick={() => navigate(`/item/${item.id}`)}
-    >
+    <div className="flex flex-col justify-center items-start p-2 relative cursor-pointer">
       <img
         src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
         alt=""
         className="h-80 w-56 hover:scale-95 cursor-pointer ease-in transition-transform duration-200"
+        onClick={() => navigate(`/item/${item.id}`)}
       />
       <div className="absolute flex justify-between w-full bottom-1/4 z-4 px-6">
         <div>

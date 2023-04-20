@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 const ItemDetails = () => {
   const { itemId } = useParams()
 
-  const [item, setItem] = useState(null)
+  const [item, setItem] = useState({})
   const [items, setItems] = useState([])
 
   const getItem = async () => {
@@ -13,6 +13,7 @@ const ItemDetails = () => {
       { method: "GET" }
     )
     const productJson = await product.json()
+    // setItem((prev) => ({ ...prev, ...productJson.data }))
     setItem(productJson.data)
   }
 
@@ -41,7 +42,12 @@ const ItemDetails = () => {
       </section>
       <section>
         <h1>{item.id}</h1>
-        <h1>{items[7].id}</h1>
+        <h1>{items[1]?.id}</h1>
+        {/* <h3>
+          {items.map((prod) => (
+            <span key={prod.id}>{prod.id}</span>
+          ))}
+        </h3> */}
       </section>
     </div>
   )

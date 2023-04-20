@@ -5,7 +5,7 @@ import {
   increaseCount,
   removeFromCart,
   selectCart,
-} from "../state"
+} from "../state/index"
 
 const CartTicket = ({ item }) => {
   const dispatch = useDispatch()
@@ -23,9 +23,9 @@ const CartTicket = ({ item }) => {
 
   return (
     <div>
-      <h2 className="uppercase text-left mb-2">Shopping Bag</h2>
-      <hr />
-      <div className="grid grid-cols-3 gap-4 mt-4 border-b-2">
+      {/* Cart Heading */}
+
+      <div className="grid grid-cols-3 gap-2 mt-3 border-lime-400 border-2 p-2 rounded-lg">
         <img
           src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.small?.url}`}
           alt="Item Cart Pic"
@@ -33,14 +33,17 @@ const CartTicket = ({ item }) => {
         />
         <section className="col-span-2 text-left grid grid-rows-3">
           <div className="flex items-baseline justify-between">
-            <h3 className="capitalize text-lg">{item.attributes.name}</h3>
+            <h3 className="capitalize text-lg font-semibold">
+              {item.attributes.name}
+            </h3>
             <XMarkIcon
-              className="h-4 w-4 cursor-pointer hover:scale-105"
+              className="h-4 w-4 cursor-pointer hover:scale-115 transition"
               onClick={() => dispatch(removeFromCart(item))}
             />
           </div>
           <p className="text-sm">{item.attributes.shortDescription}</p>
-          <div className="flex justify-between my-3">
+          <div className="flex justify-between items-center my-3">
+            <div className="text-base">Price: {item.attributes.price}</div>
             <article
               className={`${
                 itemCount > 0 ? "block" : "hidden"
